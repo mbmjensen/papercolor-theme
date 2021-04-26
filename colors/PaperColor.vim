@@ -1116,8 +1116,8 @@ endfun
 
 fun! s:apply_syntax_highlightings()
 
-  if s:themeOpt_transparent_background
-    exec 'hi Normal' . s:fg_foreground
+  if v:true
+    exec 'hi Normal guibg=NONE ctermbg=NONE' . s:fg_foreground
     " Switching between dark & light variant through `set background`
     " NOTE: Handle background switching right after `Normal` group because of
     " God-know-why reason. Not doing this way had caused issue before
@@ -1132,6 +1132,9 @@ fun! s:apply_syntax_highlightings()
     exec 'hi Conceal' . s:fg_linenumber_fg
     exec 'hi VertSplit' . s:fg_vertsplit_fg . s:ft_none
     exec 'hi FoldColumn' . s:fg_folded_fg . s:bg_transparent . s:ft_none
+
+    " My additional transparent settings
+    exec 'hi WhichKeyFloating guibg=NONE ctermbg=NONE'
   else
     exec 'hi Normal' . s:fg_foreground . s:bg_background
     " Switching between dark & light variant through `set background`
@@ -1171,15 +1174,15 @@ fun! s:apply_syntax_highlightings()
     if s:mode == s:MODE_16_COLOR
       exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg
     else
-      exec 'hi CursorLineNr' . s:fg_cursorlinenr_fg . s:bg_cursorlinenr_bg . s:ft_none
+      exec 'hi CursorLineNr guibg=NONE ctermbg=NONE' . s:fg_cursorlinenr_fg . s:ft_none
     endif
     exec 'hi CursorColumn'  . s:bg_cursorcolumn . s:ft_none
     exec 'hi PMenu' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
     exec 'hi PMenuSel' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_reverse
     if s:themeOpt_transparent_background
-      exec 'hi SignColumn' . s:fg_green . s:ft_none
+      exec 'hi SignColumn guibg=NONE ctermbg=NONE' . s:fg_green . s:ft_none
     else
-      exec 'hi SignColumn' . s:fg_green . s:bg_background . s:ft_none
+      exec 'hi SignColumn guibg=NONE ctermbg=NONE' . s:fg_green . s:ft_none
     endif
   end
   if version >= 703
