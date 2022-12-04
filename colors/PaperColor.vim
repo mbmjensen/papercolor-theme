@@ -1138,9 +1138,6 @@ fun! s:apply_syntax_highlightings()
 
     " My additional transparent settings
     exec 'hi WhichKeyFloating guibg=NONE ctermbg=NONE'
-
-    " My Custom Colors
-    exec 'highlight CocMenuSel guifg=#e4e4e4 guibg=#e4e4e4'
   else
     exec 'hi Normal' . s:fg_foreground . s:bg_background
     " Switching between dark & light variant through `set background`
