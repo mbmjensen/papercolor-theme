@@ -2259,6 +2259,9 @@ fun! s:apply_syntax_highlightings()
   exec 'hi CocInfoSign' . s:fg_todo_fg . s:bg_todo_bg . s:ft_bold
   exec 'hi CocHintSign' . s:fg_todo_fg . s:bg_todo_bg . s:ft_bold
 
+  " Custom Coc Settings
+  exec 'highlight CocSearch' . s:fg_orange
+
   " Debug Adapter Protocol (DAP) - Plugin: rcarriga/nvim-dap-ui
   if has('nvim')
     exec 'hi DapUIDecoration' . s:fg_blue
